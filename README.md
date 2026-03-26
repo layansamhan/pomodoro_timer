@@ -1,83 +1,98 @@
+# Multi-Mode Pomodoro Timer
 
-### Main Components
+**Student:** Layan Samhan
+**Student Number:** 240417271
+**Course:** COM206
 
-| Component | Description |
-|-----------|-------------|
-| **Input** | User interactions (Play, Pause, Reset, Mode Selection) |
-| **Processing** | Timer logic, countdown management, state updates |
-| **Output** | Real-time timer display on screen |
+### Research Question / Problem Statement
+Time management during complex tasks requires a reliable way to switch between work and rest periods. How can we implement a precise, multistate countdown system in a mobile environment that remains accurate while the user toggles between different durations?
+
+### Objective of the Project
+The project aims to build a Flutter application that utilizes a centralized state to manage three distinct time intervals. It focuses on the technical implementation of an asynchronous countdown and the logic required to reset or switch modes without software conflicts.
+
+### Expected Outcome
+A working mobile application that demonstrates clean state management and reliable timer execution. The project will prove that a single code logic can handle multiple time-based requirements through efficient variable mapping.
 
 ---
 
-## 💻 Technical Implementation
+## Methodology
+
+### Approach to Problem Solving
+
+The control flow of the solution is structured as follows:
+
+1. START the Application
+2. SET timer to 25 minutes (1500 seconds) by default
+3. WAIT for user input
+4. IF the user presses PLAY:
+   - START a loop that repeats every 1 second
+   - SUBTRACT 1 from the time
+   - REFRESH the numbers on the screen
+   - IF the time hits 0: STOP the loop
+5. IF the user presses PAUSE:
+   - STOP the 1-second loop
+6. IF the user presses RESET:
+   - STOP the loop
+   - SET the time back to the original starting number
+   - REFRESH the screen
+7. IF the user picks a NEW TIME (like 5 minutes):
+   - STOP the current countdown
+   - CHANGE the time to 300 seconds
+   - REFRESH the numbers on the screen
+8. KEEP GOING until the app is closed
+
+### Main Components
+
+Input: User interactions (Play, Pause, Reset, Mode Selection)
+Processing: Timer logic, countdown management, state updates
+Output: Real-time timer display on screen
+
+---
+
+## Technical Implementation
 
 ### Programming Language
-**Flutter (Dart)** – Chosen for cross-platform mobile development and robust state management capabilities.
+Flutter (Dart)
 
-### Code Example (Timer Logic)
+### State Management Approach
 
-```dart
-class PomodoroTimer extends StatefulWidget {
-  @override
-  _PomodoroTimerState createState() => _PomodoroTimerState();
-}
+The application uses Flutter's setState() for local state management, ensuring:
+- Real-time UI updates every second
+- Consistent timer behavior across mode switches
+- Clean separation of timer logic from UI components
 
-class _PomodoroTimerState extends State<PomodoroTimer> {
-  int _timeLeft = 1500; // 25 minutes in seconds
-  Timer? _timer;
-  int _currentMode = 0; // 0: Pomodoro, 1: Short Break, 2: Long Break
+---
 
-  void _startTimer() {
-    _timer = Timer.periodic(Duration(seconds: 1), (timer) {
-      if (_timeLeft > 0) {
-        setState(() {
-          _timeLeft--;
-        });
-      } else {
-        _stopTimer();
-        _onTimerComplete();
-      }
-    });
-  }
+## Getting Started
 
-  void _stopTimer() {
-    _timer?.cancel();
-    _timer = null;
-  }
+### Prerequisites
 
-  void _resetTimer() {
-    _stopTimer();
-    setState(() {
-      _timeLeft = _getDurationForMode(_currentMode);
-    });
-  }
+- Flutter SDK (latest stable version)
+- Android Studio / VS Code with Flutter extensions
+- iOS or Android device/emulator
 
-  void _changeMode(int mode) {
-    _stopTimer();
-    setState(() {
-      _currentMode = mode;
-      _timeLeft = _getDurationForMode(mode);
-    });
-  }
+### Installation
 
-  int _getDurationForMode(int mode) {
-    switch (mode) {
-      case 0: return 1500; // 25 min
-      case 1: return 300;  // 5 min
-      case 2: return 900;  // 15 min
-      default: return 1500;
-    }
-  }
+```
+git clone https://github.com/yourusername/pomodoro-timer.git
+cd pomodoro-timer
+flutter pub get
+flutter run
+```
 
-  @override
-  void dispose() {
-    _stopTimer();
-    super.dispose();
-  }
+---
 
-  @override
-  Widget build(BuildContext context) {
-    // UI implementation with timer display and controls
-    return Container();
-  }
-}
+## Features
+
+- Pomodoro Timer: 25-minute focus sessions
+- Short Break: 5-minute rest periods
+- Long Break: 15-minute extended breaks
+- Play: Start the countdown timer
+- Pause: Pause the current session
+- Reset: Reset timer to current mode default
+- Mode Switching: Switch between Pomodoro and break modes
+---
+
+## License
+
+This project is submitted as part of academic coursework and is intended for educational purposes only.
