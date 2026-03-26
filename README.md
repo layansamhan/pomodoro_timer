@@ -43,9 +43,11 @@ The control flow of the solution is structured as follows:
 
 ### Main Components
 
-Input: User interactions (Play, Pause, Reset, Mode Selection)
-Processing: Timer logic, countdown management, state updates
-Output: Real-time timer display on screen
+**Input:** User interactions (Play, Pause, Reset, Mode Selection)
+
+**Processing:** Timer logic, countdown management, state updates
+
+**Output:** Real-time timer display on screen
 
 ---
 
