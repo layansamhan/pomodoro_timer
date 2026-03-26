@@ -1,21 +1,83 @@
-<<<<<<< HEAD
-# pomodoro_timer_app
 
-A new Flutter project.
+### Main Components
 
-## Getting Started
+| Component | Description |
+|-----------|-------------|
+| **Input** | User interactions (Play, Pause, Reset, Mode Selection) |
+| **Processing** | Timer logic, countdown management, state updates |
+| **Output** | Real-time timer display on screen |
 
-This project is a starting point for a Flutter application.
+---
 
-A few resources to get you started if this is your first Flutter project:
+## 💻 Technical Implementation
 
-- [Learn Flutter](https://docs.flutter.dev/get-started/learn-flutter)
-- [Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Flutter learning resources](https://docs.flutter.dev/reference/learning-resources)
+### Programming Language
+**Flutter (Dart)** – Chosen for cross-platform mobile development and robust state management capabilities.
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
-=======
-# pomodoro_timer
->>>>>>> b1e062373d4b59c20cedcfe9526bfc0c877b0449
+### Code Example (Timer Logic)
+
+```dart
+class PomodoroTimer extends StatefulWidget {
+  @override
+  _PomodoroTimerState createState() => _PomodoroTimerState();
+}
+
+class _PomodoroTimerState extends State<PomodoroTimer> {
+  int _timeLeft = 1500; // 25 minutes in seconds
+  Timer? _timer;
+  int _currentMode = 0; // 0: Pomodoro, 1: Short Break, 2: Long Break
+
+  void _startTimer() {
+    _timer = Timer.periodic(Duration(seconds: 1), (timer) {
+      if (_timeLeft > 0) {
+        setState(() {
+          _timeLeft--;
+        });
+      } else {
+        _stopTimer();
+        _onTimerComplete();
+      }
+    });
+  }
+
+  void _stopTimer() {
+    _timer?.cancel();
+    _timer = null;
+  }
+
+  void _resetTimer() {
+    _stopTimer();
+    setState(() {
+      _timeLeft = _getDurationForMode(_currentMode);
+    });
+  }
+
+  void _changeMode(int mode) {
+    _stopTimer();
+    setState(() {
+      _currentMode = mode;
+      _timeLeft = _getDurationForMode(mode);
+    });
+  }
+
+  int _getDurationForMode(int mode) {
+    switch (mode) {
+      case 0: return 1500; // 25 min
+      case 1: return 300;  // 5 min
+      case 2: return 900;  // 15 min
+      default: return 1500;
+    }
+  }
+
+  @override
+  void dispose() {
+    _stopTimer();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    // UI implementation with timer display and controls
+    return Container();
+  }
+}
