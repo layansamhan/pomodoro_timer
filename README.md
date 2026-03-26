@@ -17,8 +17,6 @@ A working mobile application that demonstrates clean state management and reliab
 
 ---
 
-## Methodology
-
 ### Approach to Problem Solving
 
 The control flow of the solution is structured as follows:
@@ -51,17 +49,8 @@ Output: Real-time timer display on screen
 
 ---
 
-## Technical Implementation
-
 ### Programming Language
 Flutter (Dart)
-
-### State Management Approach
-
-The application uses Flutter's setState() for local state management, ensuring:
-- Real-time UI updates every second
-- Consistent timer behavior across mode switches
-- Clean separation of timer logic from UI components
 
 ---
 
