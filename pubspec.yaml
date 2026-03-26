@@ -1,0 +1,31 @@
+name: pomodoro_timer_app
+description: "A new Flutter project."
+
+publish_to: 'none' 
+
+
+
+environment:
+  sdk: ^3.11.3
+
+
+dependencies:
+  flutter:
+    sdk: flutter
+  google_fonts: ^6.2.1
+
+  
+  cupertino_icons: ^1.0.8
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  
+  flutter_lints: ^6.0.0
+
+
+flutter:
+
+  
+  uses-material-design: true
