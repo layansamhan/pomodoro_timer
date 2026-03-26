@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # pomodoro_timer_app
 
 A new Flutter project.
@@ -15,3 +16,6 @@ A few resources to get you started if this is your first Flutter project:
 For help getting started with Flutter development, view the
 [online documentation](https://docs.flutter.dev/), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
+=======
+# pomodoro_timer
+>>>>>>> b1e062373d4b59c20cedcfe9526bfc0c877b0449
