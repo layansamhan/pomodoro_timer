@@ -1,8 +1,10 @@
 # Multi-Mode Pomodoro Timer
 
-# **Student:** Layan Samhan
-# **Student Number:** 240417271
-# **Course:** COM206
+ **Student:** Layan Samhan
+ 
+ **Student Number:** 240417271
+ 
+ **Course:** COM206
 
 ### Research Question / Problem Statement
 Time management during complex tasks requires a reliable way to switch between work and rest periods. How can we implement a precise, multistate countdown system in a mobile environment that remains accurate while the user toggles between different durations?
