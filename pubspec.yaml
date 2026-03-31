@@ -1,5 +1,5 @@
 name: pomodoro_timer_app
-description: "A new Flutter project."
+description: "A simple productivity tool that uses timed work sessions and short breaks to help you stay focused and avoid burning out."
 
 publish_to: 'none' 
 
